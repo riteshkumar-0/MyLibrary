@@ -9,5 +9,8 @@ app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }))
 
 
+import userRoute from "./route/user.route";
+
+app.use("/user", userRoute);
 
 export { app }

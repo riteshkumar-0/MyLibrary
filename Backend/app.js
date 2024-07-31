@@ -10,7 +10,8 @@ app.use(express.urlencoded({ extended: true }))
 
 
 import userRoute from "./route/user.route";
+import bookRoute from "./route/book.route"
 
 app.use("/user", userRoute);
-
+app.use("/book",bookRoute)
 export { app }

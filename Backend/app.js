@@ -1,19 +1,26 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import path from 'path';
+import bodyParser from "body-parser"
 
 const app = express()
 app.use(express.json());
 app.use(cors())
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }))
+app.use(bodyParser.json());
+app.use(express.static(path.resolve("./public")));
 
 
-import userRoute from "./route/user.route";
-import bookRoute from "./route/book.route";
-import listRoutes from "./route/list.route";
+import bookRoute from "./route/book.route.js";
+import userRoute from "./route/user.route.js";
+import listRoutes from "./route/list.route.js"
+import request from "./route/request.route.js";
 
+app.use("/book", bookRoute);
 app.use("/user", userRoute);
-app.use("/book",bookRoute)
-app.use("/lists",listRoutes)
+app.use("/lists", listRoutes);
+app.use("/request", request)
 export { app }
+
